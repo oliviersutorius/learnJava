@@ -14,7 +14,19 @@ public class PrimeNumbers {
      * Relis la section « débordement » du cours si ton programme se comporte bizarrement avec ce nombre.
      */
     public static boolean isPrime(int n) {
-        throw new UnsupportedOperationException("TODO");
+        if (n < 2) return false;
+        if (n == 2) return true;
+        if (n % 2 == 0) return false;
+
+        int limite = (int) Math.sqrt(n);
+
+        for (int i = 3; i <= limite; i += 2) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /**
@@ -22,7 +34,14 @@ public class PrimeNumbers {
      * Exemple : countPrimesUpTo(10) = 4 (2, 3, 5, 7).
      */
     public static int countPrimesUpTo(int limit) {
-        throw new UnsupportedOperationException("TODO");
+        int result = 0;
+        for (int i = 1; i <= limit; i += 1 ) {
+            if (isPrime(i)) {
+                result += 1;
+            }
+        }
+
+        return result;
     }
 
     /**
@@ -31,6 +50,14 @@ public class PrimeNumbers {
      * Astuce : on ne sait pas à l'avance jusqu'où chercher, une boucle while est donc plus adaptée qu'un for.
      */
     public static int nthPrime(int n) {
-        throw new UnsupportedOperationException("TODO");
+        int found = 0;
+        int candidate = 1;
+        while (found < n) {
+            candidate++;
+            if (isPrime(candidate)) {
+                found++;
+            }
+        }
+        return candidate;
     }
 }

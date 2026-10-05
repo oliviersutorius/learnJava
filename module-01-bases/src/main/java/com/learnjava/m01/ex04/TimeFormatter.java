@@ -7,21 +7,29 @@ package com.learnjava.m01.ex04;
  */
 public class TimeFormatter {
 
+    private static final int SECONDS_PER_MINUTE = 60;
+    private static final int SECONDS_PER_HOUR = 3600;
+
     /**
      * Convertit des heures, minutes et secondes en un nombre total de secondes.
      * Exemple : toSeconds(1, 2, 3) = 3723.
      */
     public static int toSeconds(int hours, int minutes, int seconds) {
-        throw new UnsupportedOperationException("TODO");
+        return hours*SECONDS_PER_HOUR + minutes*SECONDS_PER_MINUTE + seconds;
     }
 
     /**
      * Formate un nombre de secondes au format "HH:MM:SS", chaque partie sur au moins 2 chiffres.
      * Exemples : format(3723) = "01:02:03", format(59) = "00:00:59", format(360000) = "100:00:00".
      * Astuce : String.format("%02d", 7) donne "07".
+     * "3599, 00:59:59"
      */
     public static String format(int totalSeconds) {
-        throw new UnsupportedOperationException("TODO");
+        int hour = totalSeconds / SECONDS_PER_HOUR;
+        int minutes = (totalSeconds - (hour * SECONDS_PER_HOUR)) / SECONDS_PER_MINUTE;
+        int seconds = totalSeconds - (hour *SECONDS_PER_HOUR) - (minutes * SECONDS_PER_MINUTE);
+
+        return String.format("%02d",hour)+':'+String.format("%02d",minutes)+':'+String.format("%02d",seconds);
     }
 
     /**
@@ -30,6 +38,32 @@ public class TimeFormatter {
      *            humanize(0) = "0s".
      */
     public static String humanize(int totalSeconds) {
-        throw new UnsupportedOperationException("TODO");
+        if (totalSeconds == 0) {
+            return "0s";
+        }
+
+        int hour = totalSeconds / SECONDS_PER_HOUR;
+        int minutes = totalSeconds % SECONDS_PER_HOUR / SECONDS_PER_MINUTE;
+        int seconds = totalSeconds % SECONDS_PER_MINUTE;
+
+        String valeur = "";
+
+        if (hour > 0) {
+            valeur = valeur + hour + 'h';
+            if (minutes > 0 || seconds > 0) {
+                valeur = valeur + ' ';
+            }
+        }
+        if (minutes > 0) {
+            valeur = valeur + minutes + "min";
+            if (seconds > 0) {
+                valeur = valeur + ' ';
+            }
+        }
+        if (seconds > 0) {
+            valeur = valeur + seconds + 's';
+        }
+
+        return valeur;
     }
 }

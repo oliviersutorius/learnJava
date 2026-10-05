@@ -8,6 +8,7 @@ Un parcours progressif pour apprendre Java par la pratique : des bases du langag
 2. Découvre le langage : [docs/01-le-langage-java.md](docs/01-le-langage-java.md).
 3. Lis les bonnes pratiques : [docs/02-bonnes-pratiques.md](docs/02-bonnes-pratiques.md).
 4. Consulte le plan du parcours : [docs/03-parcours.md](docs/03-parcours.md).
+   Après chaque revue de code, relis [docs/04-mes-erreurs-java.md](docs/04-mes-erreurs-java.md) : le journal de tes erreurs Java, classées par type.
 5. Commence par le module 1 : [module-01-bases/COURS.md](module-01-bases/COURS.md).
 
 ## Comment travailler un module

@@ -4,12 +4,12 @@ Coche une case (`[x]`) quand les tests correspondants sont verts.
 
 ## Niveau 1 — Bases
 ### M01. Syntaxe, types, conditions, boucles
-- [ ] Ex 1 `TemperatureConverter`
-- [ ] Ex 2 `LeapYear`
-- [ ] Ex 3 `FizzBuzz`
-- [ ] Ex 4 `TimeFormatter`
-- [ ] Ex 5 `PrimeNumbers`
-- [ ] 🎯 Mini-projet `GuessTheNumber`
+- [x] Ex 1 `TemperatureConverter`
+- [x] Ex 2 `LeapYear`
+- [x] Ex 3 `FizzBuzz`
+- [x] Ex 4 `TimeFormatter`
+- [x] Ex 5 `PrimeNumbers`
+- [x] 🎯 Mini-projet `GuessTheNumber`
 - [ ] Revue de code faite
 
 ### M02. Méthodes, `String`, tableaux

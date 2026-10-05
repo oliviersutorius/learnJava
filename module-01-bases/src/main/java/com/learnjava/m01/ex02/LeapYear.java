@@ -12,7 +12,11 @@ public class LeapYear {
      * Exemples : 2024 oui, 1900 non, 2000 oui, 2023 non.
      */
     public static boolean isLeapYear(int year) {
-        throw new UnsupportedOperationException("TODO");
+        if (year % 100 == 0) {
+             return year % 400 == 0;
+        }
+
+        return year % 4 == 0;
     }
 
     /**
@@ -21,7 +25,15 @@ public class LeapYear {
      * Renvoie -1 si le mois n'est pas compris entre 1 et 12.
      */
     public static int daysInMonth(int month, int year) {
-        throw new UnsupportedOperationException("TODO");
+        switch (month) {
+            case 2:
+                return isLeapYear(year) ? 29 : 28;
+            case 1,3,5,7,8,10,12:
+                return 31;
+            case 4,6,9,11:
+                return 30;
+        }
+        return -1;
     }
 
     /**
@@ -30,6 +42,10 @@ public class LeapYear {
      * Astuce : réutilise daysInMonth.
      */
     public static boolean isValidDate(int day, int month, int year) {
-        throw new UnsupportedOperationException("TODO");
+        int maxDay = daysInMonth(month, year);
+        if (day <= 0 || day > maxDay || maxDay == -1) {
+            return false;
+        }
+        return true;
     }
 }

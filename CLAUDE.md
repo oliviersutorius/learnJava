@@ -15,6 +15,16 @@ Parcours d'apprentissage de Java pour Olivier, développeur PHP/Laravel qui conn
 - Ne passer au module suivant (et ne le générer) que lorsque tous les tests du module en cours sont verts. Mettre à jour `PROGRESSION.md`, `docs/03-parcours.md` (marquer ✅) quand un module est créé.
 - Ne jamais modifier les tests pour faire passer le code d'Olivier.
 
+## Journal des erreurs Java (obligatoire après CHAQUE relecture)
+
+À la fin de chaque revue de code, mettre à jour `docs/04-mes-erreurs-java.md` :
+- n'y consigner que les erreurs **inhérentes à Java** (pièges du langage, API standard, conventions et idiomes Java) ; pas les bugs de pure logique métier ;
+- classer chaque erreur dans sa catégorie (Types et opérateurs, Comparaisons, Expressions booléennes, Boucles, Constantes, Nommage, Conventions de style, API standard… ; créer une nouvelle catégorie numérotée si besoin) ;
+- pour une nouvelle règle : ajouter une section avec le code fautif (`fichier:ligne`), la correction, le « pourquoi », et une ligne dans le tableau de synthèse ;
+- pour une règle déjà présente : ajouter la nouvelle occurrence, incrémenter « Nb de revues où l'erreur est présente », mettre à jour « Dernière revue » et le statut (✅ corrigé, ⏸️ pas encore corrigé, 🔁 présente dans plusieurs revues) ;
+- ajouter une ligne à l'historique des revues (identifiant `Mxx #n`, date, nouvelles erreurs, erreurs corrigées depuis la revue précédente) ;
+- signaler à Olivier, en fin de revue, que le journal a été mis à jour et quelles règles reviennent le plus.
+
 ## Commandes
 
 Java 25 (Temurin) et Maven sont installés via SDKMAN! (`~/.sdkman`). Toujours utiliser le wrapper `./mvnw`.

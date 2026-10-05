@@ -11,7 +11,9 @@ public class TemperatureConverter {
      * Formule : F = C × 9/5 + 32
      */
     public static double celsiusToFahrenheit(double celsius) {
-        throw new UnsupportedOperationException("TODO");
+        double farenheit = celsius * ((double) 9 /5) + 32;
+
+        return farenheit;
     }
 
     /**
@@ -19,13 +21,15 @@ public class TemperatureConverter {
      * Formule : C = (F − 32) × 5/9
      */
     public static double fahrenheitToCelsius(double fahrenheit) {
-        throw new UnsupportedOperationException("TODO");
+        double celsius = (fahrenheit - 32) * (double)5/9;
+
+        return celsius;
     }
 
     /**
      * Indique si l'eau gèle à cette température (en Celsius), c'est-à-dire si elle est inférieure ou égale à 0.
      */
     public static boolean isFreezing(double celsius) {
-        throw new UnsupportedOperationException("TODO");
+        return celsius <= 0;
     }
 }
