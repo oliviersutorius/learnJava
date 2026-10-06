@@ -43,9 +43,6 @@ public class LeapYear {
      */
     public static boolean isValidDate(int day, int month, int year) {
         int maxDay = daysInMonth(month, year);
-        if (day <= 0 || day > maxDay || maxDay == -1) {
-            return false;
-        }
-        return true;
+        return day > 0 && day <= maxDay;
     }
 }

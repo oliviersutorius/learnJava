@@ -42,7 +42,7 @@ public class FizzBuzz {
                 retour += fizzBuzz(i);
             }
             else {
-                retour += ' '+fizzBuzz(i);
+                retour += " "+fizzBuzz(i);
             }
 
         }

@@ -11,9 +11,7 @@ public class TemperatureConverter {
      * Formule : F = C × 9/5 + 32
      */
     public static double celsiusToFahrenheit(double celsius) {
-        double farenheit = celsius * ((double) 9 /5) + 32;
-
-        return farenheit;
+        return celsius * (9.0 / 5) + 32;
     }
 
     /**
@@ -21,9 +19,7 @@ public class TemperatureConverter {
      * Formule : C = (F − 32) × 5/9
      */
     public static double fahrenheitToCelsius(double fahrenheit) {
-        double celsius = (fahrenheit - 32) * (double)5/9;
-
-        return celsius;
+        return (fahrenheit - 32) * 5.0/9;
     }
 
     /**
