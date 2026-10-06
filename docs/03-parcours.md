@@ -25,10 +25,14 @@ Structure d'un programme, types primitifs, opérateurs, débordement, `if`/`swit
 - Ex 5 `PrimeNumbers` : boucles imbriquées, optimisation, overflow
 - 🎯 Mini-projet : jeu « Devine le nombre » en console
 
-### M02. Méthodes, `String`, tableaux
-Méthodes et paramètres (passage par valeur), surcharge, `String` et ses méthodes, immuabilité des chaînes, `StringBuilder`, tableaux 1D et 2D, `char`.
-- `StringTools` (inverser, palindrome, voyelles), `ArrayStats` (min, max, moyenne, médiane), `CaesarCipher`, `WordCounter`, `MatrixOps`
-- 🎯 Mini-projet : gestionnaire de notes d'élèves en console
+### ✅ M02. Méthodes, `String`, tableaux — `module-02-methodes-strings-tableaux`
+Méthodes `public`/`private`, surcharge, passage par valeur de la référence, `char` et `Character`, méthodes de `String`, immuabilité, `split` et regex simples, `StringBuilder`, `Locale`, tableaux 1D et 2D, `Arrays`.
+- Ex 1 `StringTools` : inverser, palindrome, voyelles, majuscules
+- Ex 2 `ArrayStats` : somme, min, max, moyenne, médiane sans modifier l'entrée
+- Ex 3 `CaesarCipher` : arithmétique sur les `char`, modulo négatif, surcharge
+- Ex 4 `WordCounter` : `split`, chaînes vides, mot le plus fréquent
+- Ex 5 `MatrixOps` : identité, transposée, addition, produit, symétrie
+- 🎯 Mini-projet : carnet de notes en console (`GradeBook`)
 
 ## Niveau 2 — Programmation orientée objet
 

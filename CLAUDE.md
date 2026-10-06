@@ -52,5 +52,7 @@ Java 25 (Temurin) et Maven sont installés via SDKMAN! (`~/.sdkman`). Toujours u
 2. Copier la structure de `module-01-bases` et `solutions/module-01-bases` (pom avec `exec-maven-plugin` pour le mini-projet et `build-helper` pour les solutions), package `com.learnjava.mNN`.
 3. Contenu : `COURS.md` (objectifs + cours court avec exemples commentés), `EXERCICES.md` (tableau des exercices avec commandes, énoncés, indices, pièges), 3 à 5 exercices de difficulté croissante + un mini-projet, tests JUnit/AssertJ (`@DisplayName` en français, `@ParameterizedTest` pour les jeux de données, cas limites).
 4. Vérifier : `./mvnw -q -Psolutions -pl solutions/module-NN-<nom> test` doit être vert, et `./mvnw -pl module-NN-<nom> test` rouge.
-5. N'utiliser dans les exercices que les notions déjà vues dans les modules précédents (ex. pas d'exceptions avant M05, pas de streams avant M07).
-6. À partir de M12 (Spring Boot), un module pourra nécessiter son propre parent Spring Boot : adapter la structure à ce moment-là.
+5. Dans `@CsvSource`, une valeur vide ou composée uniquement d'espaces non entourée de `'...'` est convertie en `null` : écrire `''` ou `'   '` ; ajouter `ignoreLeadingAndTrailingWhitespace = false` quand les espaces comptent.
+6. Concevoir les exercices pour retravailler les règles récurrentes de `docs/04-mes-erreurs-java.md` et les citer dans `COURS.md` et `EXERCICES.md`.
+7. N'utiliser dans les exercices que les notions déjà vues dans les modules précédents (ex. pas d'exceptions avant M05, pas de streams avant M07).
+8. À partir de M12 (Spring Boot), un module pourra nécessiter son propre parent Spring Boot : adapter la structure à ce moment-là.

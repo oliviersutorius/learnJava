@@ -10,10 +10,16 @@ Coche une case (`[x]`) quand les tests correspondants sont verts.
 - [x] Ex 4 `TimeFormatter`
 - [x] Ex 5 `PrimeNumbers`
 - [x] 🎯 Mini-projet `GuessTheNumber`
-- [ ] Revue de code faite
+- [x] Revue de code faite
 
 ### M02. Méthodes, `String`, tableaux
-- [ ] Module terminé
+- [ ] Ex 1 `StringTools`
+- [ ] Ex 2 `ArrayStats`
+- [ ] Ex 3 `CaesarCipher`
+- [ ] Ex 4 `WordCounter`
+- [ ] Ex 5 `MatrixOps`
+- [ ] 🎯 Mini-projet `GradeBook`
+- [ ] Revue de code faite
 
 ## Niveau 2 — POO
 - [ ] M03. Classes, objets, encapsulation

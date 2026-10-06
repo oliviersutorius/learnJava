@@ -13,6 +13,7 @@
 
     <modules>
         <module>module-01-bases</module>
+        <module>module-02-methodes-strings-tableaux</module>
     </modules>
 
     <properties>
@@ -82,6 +83,7 @@
             <id>solutions</id>
             <modules>
                 <module>solutions/module-01-bases</module>
+                <module>solutions/module-02-methodes-strings-tableaux</module>
             </modules>
         </profile>
     </profiles>
