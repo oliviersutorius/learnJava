@@ -13,7 +13,7 @@ Coche une case (`[x]`) quand les tests correspondants sont verts.
 - [x] Revue de code faite
 
 ### M02. Méthodes, `String`, tableaux
-- [ ] Ex 1 `StringTools`
+- [x] Ex 1 `StringTools`
 - [ ] Ex 2 `ArrayStats`
 - [ ] Ex 3 `CaesarCipher`
 - [ ] Ex 4 `WordCounter`
