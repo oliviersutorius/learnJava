@@ -23,7 +23,7 @@ Légende des statuts : ✅ corrigé · ⏸️ pas encore corrigé · 🔁 erreur
 | 5.1 | Constantes | Pas de nombres magiques : `private static final` en `UPPER_SNAKE_CASE` | 4 | M02 #2 | ✅ |
 | 6.1 | Nommage | Identifiants en anglais, sans fautes, cohérents | 5 | M02 #6 | ✅ |
 | 6.2 | Nommage | Un nom doit dire ce que contient la variable | 2 | M02 #4 | ✅ |
-| 6.3 | Nommage | Ne pas donner à une variable le nom d'une méthode | 1 | M01 #1 | ✅ |
+| 6.3 | Nommage | Ne pas donner à une variable le nom d'une méthode | 2 | M02 #8 | 🔁 ⏸️ |
 | 7.1 | Conventions de style | Toujours des accolades, même sur une ligne | 2 | M01 #2 | ✅ |
 | 7.2 | Conventions de style | `} else {` sur la même ligne | 2 | M01 #2 | 🔁 ⏸️ |
 | 7.3 | Conventions de style | `i++` et `+=` plutôt que `i += 1` et `x = x + y` | 3 | M02 #1 | ✅ |
@@ -31,7 +31,7 @@ Légende des statuts : ✅ corrigé · ⏸️ pas encore corrigé · 🔁 erreur
 | 8.1 | API standard | `print` n'ajoute pas de retour à la ligne, `println` oui | 1 | M01 #1 | ✅ |
 | 8.2 | API standard | Un seul `String.format` pour plusieurs valeurs | 2 | M01 #2 | 🔁 ⏸️ |
 | 8.3 | API standard | Utiliser `String`, `StringBuilder` et `Character` plutôt que les réinventer | 1 | M02 #1 | ✅ |
-| 8.4 | API standard | `toUpperCase`/`toLowerCase` : une seule conversion, toujours avec la même `Locale` | 1 | M02 #2 | ✅ |
+| 8.4 | API standard | `toUpperCase`/`toLowerCase` : une seule conversion, toujours avec la même `Locale` | 2 | M02 #8 | 🔁 ⏸️ |
 | 9.1 | Méthodes | Ne pas réaffecter un paramètre | 1 | M02 #1 | ✅ |
 
 ---
@@ -267,9 +267,18 @@ Revues : M01 #1 · ✅ corrigé en M01 #2 · réapparue en M02 #4 · ✅ corrig�
 String hint = hint(secret, guess);
 // ✅
 String message = hint(secret, guess);
+
+// ❌ m02/ex04/WordCounter.java:36, 61, 62, 96
+String[] words = new String[count];          // dans la méthode words()
+String[] words = words(text);                // longestWord, mostFrequentWord
+String longestWord = "";                     // dans la méthode longestWord()
+// ✅ le nom dit le rôle de la variable dans la méthode
+String[] result = new String[count];
+String[] textWords = words(text);            // comme sentenceWords dans countOccurrences
+String longest = "";
 ```
 
-Revues : M01 #1 · ✅ corrigé en M01 #2
+Revues : M01 #1 · ✅ corrigé en M01 #2 · réapparue en M02 #8 (pas encore corrigé)
 
 ---
 
@@ -399,7 +408,14 @@ words[i].substring(0, 1).toUpperCase(Locale.ROOT) + words[i].substring(1).toLowe
 
 **Pourquoi :** sans argument, `String.toUpperCase()` et `toLowerCase()` suivent la langue du système (en turc, `"i".toUpperCase()` donne `"İ"`). Utiliser `Locale.ROOT` à un endroit et pas à l'autre ne protège qu'à moitié. `Character.toUpperCase(c)` et `Character.toLowerCase(c)` ne dépendent pas de la langue du système : c'est une bonne alternative caractère par caractère.
 
-Revues : M02 #2 · ✅ corrigé en M02 #3
+```java
+// ❌ m02/ex04/WordCounter.java:108 — de nouveau la langue du système
+return mostFrequent.toLowerCase();
+// ✅
+return mostFrequent.toLowerCase(Locale.ROOT);
+```
+
+Revues : M02 #2 · ✅ corrigé en M02 #3 · réapparue en M02 #8 (pas encore corrigé)
 
 ---
 
@@ -433,3 +449,4 @@ Revues : M02 #1 · ✅ corrigé en M02 #2
 | M02 #5 | 2026-10-07 | M02 — Ex02 `ArrayStats` | 0 | 2 (6.1, 6.2) |
 | M02 #6 | 2026-10-07 | M02 — Ex03 `CaesarCipher` | 0 (6.1 réapparaît) | — |
 | M02 #7 | 2026-10-07 | M02 — Ex03 `CaesarCipher` | 0 | 1 (6.1) |
+| M02 #8 | 2026-10-07 | M02 — Ex04 `WordCounter` | 0 (6.3 et 8.4 réapparaissent) | — |

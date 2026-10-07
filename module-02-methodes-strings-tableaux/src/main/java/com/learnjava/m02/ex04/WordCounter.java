@@ -1,5 +1,7 @@
 package com.learnjava.m02.ex04;
 
+import java.util.Locale;
+
 /**
  * Exercice 4 — Analyse de texte.
  * Notions : split et expression régulière simple, tableaux de String, remplir un tableau de taille calculée,
@@ -23,21 +25,47 @@ public class WordCounter {
      * Piège : regarde ce que renvoie "!Salut".split(SEPARATORS), ou "".split(SEPARATORS).
      */
     public static String[] words(String text) {
-        throw new UnsupportedOperationException("TODO");
+        int count = 0;
+        String[] tokens = text.split(SEPARATORS);
+        for (String token : tokens) {
+            if (!token.isEmpty()) {
+                count++;
+            }
+        }
+
+        int index = 0;
+        String[] sentenceWords = new String[count];
+        for (String token : tokens) {
+            if (!token.isEmpty()) {
+                sentenceWords[index] = token;
+                index++;
+            }
+        }
+
+        return sentenceWords;
     }
 
     /**
      * Compte les mots du texte. Exemple : countWords("  Bonjour,   le monde !  ") = 3.
      */
     public static int countWords(String text) {
-        throw new UnsupportedOperationException("TODO");
+        return words(text).length;
     }
 
     /**
      * Renvoie le mot le plus long ; en cas d'égalité, le premier rencontré. Renvoie "" s'il n'y a aucun mot.
      */
     public static String longestWord(String text) {
-        throw new UnsupportedOperationException("TODO");
+        String[] sentenceWords = words(text);
+        String longestSentenceWord = "";
+
+        for (String word : sentenceWords) {
+            if (word.length() > longestSentenceWord.length()) {
+                longestSentenceWord = word;
+            }
+        }
+
+        return longestSentenceWord;
     }
 
     /**
@@ -45,7 +73,15 @@ public class WordCounter {
      * Seuls les mots entiers comptent : « le » n'apparaît pas dans « lent ».
      */
     public static int countOccurrences(String text, String word) {
-        throw new UnsupportedOperationException("TODO");
+        int count = 0;
+        String[] sentenceWords = words(text);
+        for (String sentenceWord : sentenceWords) {
+            if (sentenceWord.equalsIgnoreCase(word)) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     /**
@@ -54,6 +90,18 @@ public class WordCounter {
      * Exemple : mostFrequentWord("Le chat et le chien. LE chat !") = "le".
      */
     public static String mostFrequentWord(String text) {
-        throw new UnsupportedOperationException("TODO");
+        String mostFrequent = "";
+
+        int bestCount = 0;
+        String[] sentenceWords = words(text);
+        for (String word : sentenceWords) {
+            int count = countOccurrences(text, word);
+            if (count > bestCount) {
+                bestCount = count;
+                mostFrequent = word;
+            }
+        }
+
+        return mostFrequent.toLowerCase(Locale.ROOT);
     }
 }
