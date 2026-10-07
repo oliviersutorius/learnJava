@@ -21,7 +21,7 @@ Légende des statuts : ✅ corrigé · ⏸️ pas encore corrigé · 🔁 erreur
 | 4.1 | Boucles | Préférer une condition de boucle explicite à `while (true)` + `break` | 1 | M01 #1 | ✅ |
 | 4.2 | Boucles | `hasNextInt()` ne consomme pas l'entrée | 1 | M01 #1 | ✅ |
 | 5.1 | Constantes | Pas de nombres magiques : `private static final` en `UPPER_SNAKE_CASE` | 4 | M02 #2 | ✅ |
-| 6.1 | Nommage | Identifiants en anglais, sans fautes, cohérents | 4 | M02 #4 | ✅ |
+| 6.1 | Nommage | Identifiants en anglais, sans fautes, cohérents | 5 | M02 #6 | ✅ |
 | 6.2 | Nommage | Un nom doit dire ce que contient la variable | 2 | M02 #4 | ✅ |
 | 6.3 | Nommage | Ne pas donner à une variable le nom d'une méthode | 1 | M01 #1 | ✅ |
 | 7.1 | Conventions de style | Toujours des accolades, même sur une ligne | 2 | M01 #2 | ✅ |
@@ -237,11 +237,12 @@ int hour; int minutes;     // ex04/TimeFormatter.java    -> hours / minutes (mê
 String[] morceaux = ...;   // m02/ex01/StringTools.java:111 -> words
 String textCleaned = ...;  // m02/ex01/StringTools.java:39  -> cleaned (en anglais, l'adjectif se place avant : cleanedText)
 int nbAbove = 0;           // m02/ex02/ArrayStats.java:87  -> count (« nb » est une abréviation française)
+String[] chains = ...;     // m02/ex03/CaesarCipher.java:53 -> candidates (faux ami : « chain » = chaîne métallique, pas chaîne de caractères)
 ```
 
 **Pourquoi :** le code Java professionnel est écrit en anglais ; mélanger les langues ou les formes (singulier/pluriel) oblige le lecteur à deviner. Dans IntelliJ, `Shift+F6` renomme partout d'un coup.
 
-Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2 · réapparue en M02 #4 · ✅ corrigé en M02 #5
+Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2 · réapparue en M02 #4 · ✅ corrigé en M02 #5 · réapparue en M02 #6 · ✅ corrigé en M02 #7
 
 ### 6.2 Un nom doit dire ce que contient la variable
 
@@ -430,3 +431,5 @@ Revues : M02 #1 · ✅ corrigé en M02 #2
 | M02 #3 | 2026-10-06 | M02 — Ex01 `StringTools` | 0 | 2 (5.1, 8.4) |
 | M02 #4 | 2026-10-07 | M02 — Ex02 `ArrayStats` | 0 (6.1 et 6.2 réapparaissent) | — |
 | M02 #5 | 2026-10-07 | M02 — Ex02 `ArrayStats` | 0 | 2 (6.1, 6.2) |
+| M02 #6 | 2026-10-07 | M02 — Ex03 `CaesarCipher` | 0 (6.1 réapparaît) | — |
+| M02 #7 | 2026-10-07 | M02 — Ex03 `CaesarCipher` | 0 | 1 (6.1) |

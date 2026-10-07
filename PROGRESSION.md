@@ -14,8 +14,8 @@ Coche une case (`[x]`) quand les tests correspondants sont verts.
 
 ### M02. Méthodes, `String`, tableaux
 - [x] Ex 1 `StringTools`
-- [ ] Ex 2 `ArrayStats`
-- [ ] Ex 3 `CaesarCipher`
+- [x] Ex 2 `ArrayStats`
+- [x] Ex 3 `CaesarCipher`
 - [ ] Ex 4 `WordCounter`
 - [ ] Ex 5 `MatrixOps`
 - [ ] 🎯 Mini-projet `GradeBook`
