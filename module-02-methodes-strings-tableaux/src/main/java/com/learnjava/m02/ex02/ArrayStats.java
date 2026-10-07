@@ -1,5 +1,7 @@
 package com.learnjava.m02.ex02;
 
+import java.util.Arrays;
+
 /**
  * Exercice 2 — Statistiques sur un tableau d'entiers.
  * Notions : tableaux, boucle for-each, long et débordement, division décimale, Arrays.copyOf / Arrays.sort,
@@ -13,21 +15,39 @@ public class ArrayStats {
      * Attention : pourquoi le type de retour est-il long et pas int ? Les tests le vérifient.
      */
     public static long sum(int[] values) {
-        throw new UnsupportedOperationException("TODO");
+        long total = 0;
+
+        for (int value : values) {
+            total += value;
+        }
+
+        return total;
     }
 
     /**
      * Renvoie la plus petite valeur. Le tableau contient au moins un élément.
      */
     public static int min(int[] values) {
-        throw new UnsupportedOperationException("TODO");
+        int minimum = values[0];
+
+        for (int value : values) {
+            minimum = Math.min(minimum, value);
+        }
+
+        return minimum;
     }
 
     /**
      * Renvoie la plus grande valeur. Le tableau contient au moins un élément.
      */
     public static int max(int[] values) {
-        throw new UnsupportedOperationException("TODO");
+        int maximum = values[0];
+
+        for (int value : values) {
+            maximum = Math.max(maximum, value);
+        }
+
+        return maximum;
     }
 
     /**
@@ -35,7 +55,11 @@ public class ArrayStats {
      * Renvoie 0.0 pour un tableau vide.
      */
     public static double average(int[] values) {
-        throw new UnsupportedOperationException("TODO");
+        if (values.length == 0) {
+            return 0.0;
+        }
+
+        return (double) sum(values) / values.length;
     }
 
     /**
@@ -45,7 +69,20 @@ public class ArrayStats {
      * IMPORTANT : le tableau reçu ne doit PAS être modifié (l'appelant ne s'attend pas à ce qu'on le trie).
      */
     public static double median(int[] values) {
-        throw new UnsupportedOperationException("TODO");
+        if (values.length == 0) {
+            return 0.0;
+        }
+
+        int[] sorted = Arrays.copyOf(values, values.length);
+        Arrays.sort(sorted);
+
+        int middle = sorted.length / 2;
+
+        if (sorted.length % 2 == 1) {
+            return sorted[middle];
+        }
+
+        return ((long) sorted[middle - 1] + sorted[middle]) / 2.0;
     }
 
     /**
@@ -53,6 +90,14 @@ public class ArrayStats {
      * Exemple : countAbove({5, 10, 15}, 9.5) = 2.
      */
     public static int countAbove(int[] values, double threshold) {
-        throw new UnsupportedOperationException("TODO");
+        int count = 0;
+
+        for (int value : values) {
+            if (value > threshold) {
+                count++;
+            }
+        }
+
+        return count;
     }
 }
