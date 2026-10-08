@@ -1,25 +1,32 @@
 package com.learnjava.m03.ex02;
 
+import java.util.Locale;
+
 /**
  * Exercice 2 — Un compte bancaire.
  * Notions : encapsulation et invariant, attribut final, attribut et méthode static, this et ==,
  * un objet qui agit sur un autre objet de la même classe.
- *
  * Règles du compte :
  * - les sommes sont exprimées en CENTIMES dans des long (jamais de double pour de l'argent : relis le cours) ;
  * - le solde n'est jamais négatif, et il ne change que par deposit, withdraw et transferTo (pas de setter !) ;
  * - chaque compte reçoit à sa création un numéro unique : 1 pour le premier compte créé, 2 pour le suivant, etc. ;
  * - le titulaire et le numéro ne changent jamais.
- *
- * TODO : déclare les attributs. Lesquels doivent être final ? Lequel doit être static ?
  */
 public class BankAccount {
+
+    private final int number;
+    private final String owner;
+
+    private static final long CENTS_PER_EURO = 100;
+    private static int createdCount = 0;
+
+    private long balanceInCents;
 
     /**
      * Crée un compte vide pour ce titulaire.
      */
     public BankAccount(String owner) {
-        throw new UnsupportedOperationException("TODO");
+        this(owner, 0);
     }
 
     /**
@@ -27,26 +34,35 @@ public class BankAccount {
      * Attention : le numéro ne doit être attribué qu'à un seul endroit du code.
      */
     public BankAccount(String owner, long initialBalanceInCents) {
-        throw new UnsupportedOperationException("TODO");
+        createdCount++;
+        this.number = createdCount;
+        this.owner = owner;
+        this.balanceInCents = Math.max(0, initialBalanceInCents);
     }
 
     public int getNumber() {
-        throw new UnsupportedOperationException("TODO");
+        return number;
     }
 
     public String getOwner() {
-        throw new UnsupportedOperationException("TODO");
+        return owner;
     }
 
     public long getBalanceInCents() {
-        throw new UnsupportedOperationException("TODO");
+        return balanceInCents;
     }
 
     /**
      * Dépose de l'argent. Renvoie false (et ne change rien) si le montant n'est pas strictement positif.
      */
     public boolean deposit(long amountInCents) {
-        throw new UnsupportedOperationException("TODO");
+        if (amountInCents <= 0) {
+            return false;
+        }
+
+        balanceInCents += amountInCents;
+
+        return true;
     }
 
     /**
@@ -54,7 +70,13 @@ public class BankAccount {
      * ou si le solde est insuffisant.
      */
     public boolean withdraw(long amountInCents) {
-        throw new UnsupportedOperationException("TODO");
+        if (amountInCents <= 0 || balanceInCents < amountInCents) {
+            return false;
+        }
+
+        balanceInCents -= amountInCents;
+
+        return true;
     }
 
     /**
@@ -64,7 +86,15 @@ public class BankAccount {
      * Astuce : réutilise withdraw et deposit.
      */
     public boolean transferTo(BankAccount target, long amountInCents) {
-        throw new UnsupportedOperationException("TODO");
+        if (target == null || target == this) {
+            return false;
+        }
+        if (!withdraw(amountInCents)) {
+            return false;
+        }
+        target.deposit(amountInCents);
+
+        return true;
     }
 
     /**
@@ -73,14 +103,14 @@ public class BankAccount {
      * Pas de double ici : découpe les centimes avec / et % (règle 1.3 de ton journal).
      */
     public String formatBalance() {
-        throw new UnsupportedOperationException("TODO");
+        return String.format(Locale.ROOT, "%d.%02d €", balanceInCents / CENTS_PER_EURO, balanceInCents % CENTS_PER_EURO);
     }
 
     /**
      * Renvoie le nombre total de comptes créés depuis le lancement du programme.
      */
     public static int accountsCreated() {
-        throw new UnsupportedOperationException("TODO");
+        return createdCount;
     }
 
     /**
@@ -88,6 +118,6 @@ public class BankAccount {
      */
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("TODO");
+        return String.format(Locale.ROOT, "Compte n°%d de %s : %s", number, owner, formatBalance());
     }
 }

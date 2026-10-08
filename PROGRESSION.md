@@ -25,7 +25,7 @@ Coche une case (`[x]`) quand les tests correspondants sont verts.
 ### M03. Classes, objets, encapsulation
 
 - [x] Ex 1 `Rectangle`
-- [ ] Ex 2 `BankAccount`
+- [x] Ex 2 `BankAccount`
 - [ ] Ex 3 `Temperature`
 - [ ] Ex 4 `Book` et `Library`
 - [ ] 🎯 Mini-projet carnet de contacts (`Contact`, `ContactBook`, `ContactBookApp`)

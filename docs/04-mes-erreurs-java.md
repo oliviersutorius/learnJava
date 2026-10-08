@@ -14,7 +14,7 @@ Légende des statuts : ✅ corrigé · ⏸️ pas encore corrigé · 🔁 erreur
 |---|---|---|---|---|---|
 | 1.1 | Types et opérateurs | `char + char` est une addition d'entiers, pas une concaténation | 2 | M01 #2 | 🔁 ⏸️ |
 | 1.2 | Types et opérateurs | Écrire un littéral décimal (`9.0`) plutôt qu'un cast (`(double) 9`) | 2 | M01 #2 | 🔁 ⏸️ |
-| 1.3 | Types et opérateurs | Décomposer une valeur avec `/` et `%` | 2 | M01 #2 | 🔁 ⏸️ |
+| 1.3 | Types et opérateurs | Décomposer une valeur avec `/` et `%` | 2 | M01 #2 | ✅ |
 | 2.1 | Comparaisons | Comparer les primitifs avec `==`, pas leur représentation texte | 3 | M02 #1 | ✅ |
 | 3.1 | Expressions booléennes | Renvoyer directement la condition au lieu de `if … return true/false` | 2 | M01 #2 | ✅ |
 | 3.2 | Expressions booléennes | Pas de drapeau booléen quand l'état est déjà déductible | 2 | M01 #2 | ✅ |
@@ -27,7 +27,7 @@ Légende des statuts : ✅ corrigé · ⏸️ pas encore corrigé · 🔁 erreur
 | 7.1 | Conventions de style | Toujours des accolades, même sur une ligne | 2 | M01 #2 | ✅ |
 | 7.2 | Conventions de style | `} else {` sur la même ligne | 2 | M01 #2 | ✅ |
 | 7.3 | Conventions de style | `i++` et `+=` plutôt que `i += 1` et `x = x + y` | 3 | M02 #1 | ✅ |
-| 7.4 | Conventions de style | Formater le code et supprimer les imports inutilisés | 5 | M03 #1 | ✅ |
+| 7.4 | Conventions de style | Formater le code et supprimer les imports inutilisés | 6 | M03 #3 | ✅ |
 | 8.1 | API standard | `print` n'ajoute pas de retour à la ligne, `println` oui | 1 | M01 #1 | ✅ |
 | 8.2 | API standard | Un seul `String.format` pour plusieurs valeurs | 2 | M01 #2 | ✅ |
 | 8.3 | API standard | Utiliser `String`, `StringBuilder` et `Character` plutôt que les réinventer | 1 | M02 #1 | ✅ |
@@ -88,7 +88,12 @@ int seconds = totalSeconds % SECONDS_PER_MINUTE;
 
 **Pourquoi :** `/` et `%` vont toujours ensemble pour découper une quantité en unités (heures/minutes, euros/centimes, lignes/colonnes d'une grille).
 
-Revues : M01 #1, M01 #2 (pas encore corrigé)
+```java
+// ✅ m03/ex02/BankAccount.java:107 — M03 #3
+String.format(Locale.ROOT, "%d.%02d €", balanceInCents / CENTS_PER_EURO, balanceInCents % CENTS_PER_EURO);
+```
+
+Revues : M01 #1, M01 #2 · ✅ corrigé en M03 #3 (`formatBalance` de `BankAccount`)
 
 ---
 
@@ -357,8 +362,9 @@ Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2
       return;
   }
   ```
+- M03 #3 : `m03/ex02/BankAccount.java:22-23` — deux lignes vides de suite entre les attributs `static` et les attributs d'instance ; l. 16, la ligne `TODO : déclare les attributs…` du code de départ est restée dans la Javadoc alors que le travail est fait.
 
-Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2 · réapparue en M02 #11 · ✅ corrigé en M02 #12 · réapparue en M03 #1 · ✅ corrigé en M03 #2
+Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2 · réapparue en M02 #11 · ✅ corrigé en M02 #12 · réapparue en M03 #1 · ✅ corrigé en M03 #2 · réapparue en M03 #3 · ✅ corrigé en M03 #4 (reste un `<p>` vide en fin de Javadoc, l. 15)
 
 ---
 
@@ -475,3 +481,5 @@ Revues : M02 #1 · ✅ corrigé en M02 #2
 | M02 #12 | 2026-10-08 | M02 — Mini-projet `GradeBook` (vérification) | 0 | 2 (6.2, 7.4) |
 | M03 #1 | 2026-10-08 | M03 — Ex01 `Rectangle` | 0 (7.4 réapparaît) | 1 (3.1) |
 | M03 #2 | 2026-10-08 | M03 — Ex01 `Rectangle` (vérification) | 0 | 1 (7.4) |
+| M03 #3 | 2026-10-08 | M03 — Ex02 `BankAccount` | 0 (7.4 réapparaît) | 1 (1.3) |
+| M03 #4 | 2026-10-08 | M03 — Ex02 `BankAccount` (vérification) | 0 | 1 (7.4) |
