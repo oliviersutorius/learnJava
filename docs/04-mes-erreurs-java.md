@@ -22,14 +22,14 @@ Légende des statuts : ✅ corrigé · ⏸️ pas encore corrigé · 🔁 erreur
 | 4.2 | Boucles | `hasNextInt()` ne consomme pas l'entrée | 1 | M01 #1 | ✅ |
 | 5.1 | Constantes | Pas de nombres magiques : `private static final` en `UPPER_SNAKE_CASE` | 4 | M02 #2 | ✅ |
 | 6.1 | Nommage | Identifiants en anglais, sans fautes, cohérents | 5 | M02 #6 | ✅ |
-| 6.2 | Nommage | Un nom doit dire ce que contient la variable | 2 | M02 #4 | ✅ |
+| 6.2 | Nommage | Un nom doit dire ce que contient la variable | 3 | M02 #11 | ✅ |
 | 6.3 | Nommage | Ne pas donner à une variable le nom d'une méthode | 2 | M02 #8 | ✅ |
 | 7.1 | Conventions de style | Toujours des accolades, même sur une ligne | 2 | M01 #2 | ✅ |
-| 7.2 | Conventions de style | `} else {` sur la même ligne | 2 | M01 #2 | 🔁 ⏸️ |
+| 7.2 | Conventions de style | `} else {` sur la même ligne | 2 | M01 #2 | ✅ |
 | 7.3 | Conventions de style | `i++` et `+=` plutôt que `i += 1` et `x = x + y` | 3 | M02 #1 | ✅ |
-| 7.4 | Conventions de style | Formater le code et supprimer les imports inutilisés | 3 | M02 #1 | ✅ |
+| 7.4 | Conventions de style | Formater le code et supprimer les imports inutilisés | 4 | M02 #11 | ✅ |
 | 8.1 | API standard | `print` n'ajoute pas de retour à la ligne, `println` oui | 1 | M01 #1 | ✅ |
-| 8.2 | API standard | Un seul `String.format` pour plusieurs valeurs | 2 | M01 #2 | 🔁 ⏸️ |
+| 8.2 | API standard | Un seul `String.format` pour plusieurs valeurs | 2 | M01 #2 | ✅ |
 | 8.3 | API standard | Utiliser `String`, `StringBuilder` et `Character` plutôt que les réinventer | 1 | M02 #1 | ✅ |
 | 8.4 | API standard | `toUpperCase`/`toLowerCase` : une seule conversion, toujours avec la même `Locale` | 2 | M02 #8 | ✅ |
 | 9.1 | Méthodes | Ne pas réaffecter un paramètre | 1 | M02 #1 | ✅ |
@@ -256,9 +256,21 @@ int maxDay = daysInMonth(month, year);
 long total = values.length;
 // ✅ values.length se lit très bien tel quel, ou bien :
 int count = values.length;
+
+// ❌ m02/miniprojet/GradeBook.java:53 — le nom répète le type au lieu de dire le contenu
+double[] gradeDouble = new double[tokens.length];
+// ✅ le type est déjà écrit à gauche
+double[] grades = new double[tokens.length];
+
+// ❌ GradeBook.java:31-34 — PASS_THRESHOLD vaut 12, alors que c'est à partir de 10 qu'on a « Passable »
+private static final double FAILED_THRESHOLD = 10;
+private static final double PASS_THRESHOLD = 12;
+// ✅ chaque constante porte le nom de la mention qu'elle ouvre
+private static final double PASS_MIN = 10.0;
+private static final double FAIRLY_GOOD_MIN = 12.0;
 ```
 
-Revues : M01 #1 · ✅ corrigé en M01 #2 · réapparue en M02 #4 · ✅ corrigé en M02 #5
+Revues : M01 #1 · ✅ corrigé en M01 #2 · réapparue en M02 #4 · ✅ corrigé en M02 #5 · réapparue en M02 #11 · ✅ corrigé en M02 #12
 
 ### 6.3 Ne pas donner à une variable le nom d'une méthode
 
@@ -311,7 +323,7 @@ else {
 } else {
 ```
 
-Revues : M01 #1, M01 #2 (pas encore corrigé)
+Revues : M01 #1, M01 #2 · ✅ corrigé en M02 #11 (`mention` et `main` du mini-projet GradeBook)
 
 ### 7.3 `i++` et `+=`
 
@@ -338,8 +350,9 @@ Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2
 - `import java.util.Objects;` n'est plus utilisé dans `GuessTheNumber.java` (revue #2) → `Ctrl+Alt+O`.
 - Les commentaires `// TODO` et le code commenté sont à supprimer une fois le travail fait (revue #1, ✅ corrigé).
 - M02 #1 : `import java.util.Locale;` inutilisé (`m02/ex01/StringTools.java:3`), espaces irréguliers `text.length()-1` (l. 24) et `+ 1 ;` (l. 45).
+- M02 #11 : `m02/miniprojet/GradeBook.java` — deux lignes vides de suite (l. 38-39), parenthèses fermantes de `formatReport(...)` décalées (l. 174-178), ligne 135 de 125 caractères (la limite usuelle est 100 ou 120). `Ctrl+Alt+L` règle les deux premiers, puis il faut couper la ligne 135.
 
-Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2
+Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2 · réapparue en M02 #11 · ✅ corrigé en M02 #12
 
 ---
 
@@ -366,7 +379,7 @@ String.format("%02d", hour) + ':' + String.format("%02d", minutes) + ':' + Strin
 String.format("%02d:%02d:%02d", hours, minutes, seconds);
 ```
 
-Revues : M01 #1, M01 #2 (pas encore corrigé)
+Revues : M01 #1, M01 #2 · ✅ corrigé en M02 #11 (`REPORT_LINE_FORMAT` dans GradeBook)
 
 ### 8.3 Utiliser `String`, `StringBuilder` et `Character` plutôt que les réinventer
 
@@ -452,3 +465,5 @@ Revues : M02 #1 · ✅ corrigé en M02 #2
 | M02 #8 | 2026-10-07 | M02 — Ex04 `WordCounter` | 0 (6.3 et 8.4 réapparaissent) | — |
 | M02 #9 | 2026-10-08 | M02 — Ex04 `WordCounter` (vérification) | 0 | 2 (6.3, 8.4) |
 | M02 #10 | 2026-10-08 | M02 — Ex05 `MatrixOps` | 0 | — |
+| M02 #11 | 2026-10-08 | M02 — Mini-projet `GradeBook` | 0 (6.2 et 7.4 réapparaissent) | 2 (7.2, 8.2) |
+| M02 #12 | 2026-10-08 | M02 — Mini-projet `GradeBook` (vérification) | 0 | 2 (6.2, 7.4) |

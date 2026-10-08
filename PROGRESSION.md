@@ -18,8 +18,8 @@ Coche une case (`[x]`) quand les tests correspondants sont verts.
 - [x] Ex 3 `CaesarCipher`
 - [x] Ex 4 `WordCounter`
 - [x] Ex 5 `MatrixOps`
-- [ ] 🎯 Mini-projet `GradeBook`
-- [ ] Revue de code faite
+- [x] 🎯 Mini-projet `GradeBook`
+- [x] Revue de code faite
 
 ## Niveau 2 — POO
 - [ ] M03. Classes, objets, encapsulation
