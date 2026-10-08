@@ -14,6 +14,7 @@
     <modules>
         <module>module-01-bases</module>
         <module>module-02-methodes-strings-tableaux</module>
+        <module>module-03-classes-objets</module>
     </modules>
 
     <properties>
@@ -84,6 +85,7 @@
             <modules>
                 <module>solutions/module-01-bases</module>
                 <module>solutions/module-02-methodes-strings-tableaux</module>
+                <module>solutions/module-03-classes-objets</module>
             </modules>
         </profile>
     </profiles>

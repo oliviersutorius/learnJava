@@ -36,10 +36,13 @@ Méthodes `public`/`private`, surcharge, passage par valeur de la référence, `
 
 ## Niveau 2 — Programmation orientée objet
 
-### M03. Classes, objets, encapsulation, constructeurs
-Attributs et méthodes d'instance, `this`, constructeurs, `private` et getters, `static` vs instance, `toString`, références et `null`, objets immuables.
-- `BankAccount`, `Rectangle`, `Temperature` immuable, `Library`
-- 🎯 Mini-projet : carnet de contacts
+### ✅ M03. Classes, objets, encapsulation, constructeurs — `module-03-classes-objets`
+Attributs et méthodes d'instance, `this`, constructeurs et `this(...)`, `private` et getters, invariants, `static` vs instance, méthodes de fabrique, `toString`, références, `==` et `null`, tableaux d'objets, objets immuables.
+- Ex 1 `Rectangle` : attributs, constructeurs, `this(...)`, `toString`
+- Ex 2 `BankAccount` : encapsulation sans setter, compteur `static`, `final`, virement entre deux objets
+- Ex 3 `Temperature` : objet immuable, constructeur `private`, méthodes de fabrique `ofCelsius`…
+- Ex 4 `Book` et `Library` : tableau d'objets + compteur, `null`, références partagées, copie défensive
+- 🎯 Mini-projet : carnet de contacts en console (`Contact`, `ContactBook`, `ContactBookApp`)
 
 ### M04. Héritage, polymorphisme, interfaces, `record`, `enum`
 `extends`, `super`, redéfinition et `@Override`, classes abstraites, interfaces et méthodes `default`, composition vs héritage, `record`, `enum` avec attributs et méthodes.

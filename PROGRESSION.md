@@ -22,7 +22,14 @@ Coche une case (`[x]`) quand les tests correspondants sont verts.
 - [x] Revue de code faite
 
 ## Niveau 2 — POO
-- [ ] M03. Classes, objets, encapsulation
+### M03. Classes, objets, encapsulation
+- [ ] Ex 1 `Rectangle`
+- [ ] Ex 2 `BankAccount`
+- [ ] Ex 3 `Temperature`
+- [ ] Ex 4 `Book` et `Library`
+- [ ] 🎯 Mini-projet carnet de contacts (`Contact`, `ContactBook`, `ContactBookApp`)
+- [ ] Revue de code faite
+
 - [ ] M04. Héritage, polymorphisme, interfaces, `record`, `enum`
 
 ## Niveau 3 — Intermédiaire
