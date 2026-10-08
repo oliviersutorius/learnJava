@@ -32,6 +32,7 @@ Légende des statuts : ✅ corrigé · ⏸️ pas encore corrigé · 🔁 erreur
 | 8.2 | API standard | Un seul `String.format` pour plusieurs valeurs | 2 | M01 #2 | ✅ |
 | 8.3 | API standard | Utiliser `String`, `StringBuilder` et `Character` plutôt que les réinventer | 1 | M02 #1 | ✅ |
 | 8.4 | API standard | `toUpperCase`/`toLowerCase` : une seule conversion, toujours avec la même `Locale` | 2 | M02 #8 | ✅ |
+| 8.5 | API standard | Formater un `double` avec `%.Nf`, pas avec `%s` | 1 | M03 #5 | ✅ |
 | 9.1 | Méthodes | Ne pas réaffecter un paramètre | 1 | M02 #1 | ✅ |
 
 ---
@@ -442,6 +443,23 @@ return mostFrequent.toLowerCase(Locale.ROOT);
 
 Revues : M02 #2 · ✅ corrigé en M02 #3 · réapparue en M02 #8 · ✅ corrigé en M02 #9
 
+### 8.5 Formater un `double` avec `%.Nf`, pas avec `%s`
+
+```java
+// ❌ m03/ex03/Temperature.java:89 — %s affiche Double.toString(celsius) : « tous les chiffres utiles », sans arrondi
+return String.format(Locale.ROOT, "%s °C", celsius);
+// ofCelsius(0.1).plus(0.2) -> "0.30000000000000004 °C"
+// ofCelsius(21.55)         -> "21.55 °C"   (deux décimales)
+// ofCelsius(0.00001)       -> "1.0E-5 °C"  (notation scientifique)
+
+// ✅ %.1f : exactement une décimale, arrondie ; Locale.ROOT garantit le point décimal
+return String.format(Locale.ROOT, "%.1f °C", celsius);
+```
+
+**Pourquoi :** `%s` appelle `String.valueOf(...)`, donc `Double.toString`, qui n'est pas fait pour l'affichage : il écrit le plus court nombre de chiffres qui identifie le `double` exactement, et passe en notation scientifique sous 10⁻³ ou au-delà de 10⁷. Un contrat d'affichage (« une décimale ») s'écrit avec `%.1f`. C'est aussi `%.Nf` qui rend la `Locale` utile : avec `Locale.FRANCE`, `%.1f` donnerait `21,5`. En PHP, c'est la différence entre `echo $x` et `number_format($x, 1)` / `sprintf('%.1f', $x)`.
+
+Revues : M03 #5 · ✅ corrigé en M03 #6
+
 ---
 
 ## 9. Méthodes
@@ -483,3 +501,5 @@ Revues : M02 #1 · ✅ corrigé en M02 #2
 | M03 #2 | 2026-10-08 | M03 — Ex01 `Rectangle` (vérification) | 0 | 1 (7.4) |
 | M03 #3 | 2026-10-08 | M03 — Ex02 `BankAccount` | 0 (7.4 réapparaît) | 1 (1.3) |
 | M03 #4 | 2026-10-08 | M03 — Ex02 `BankAccount` (vérification) | 0 | 1 (7.4) |
+| M03 #5 | 2026-10-08 | M03 — Ex03 `Temperature` | 1 (8.5) | — |
+| M03 #6 | 2026-10-08 | M03 — Ex03 `Temperature` (vérification) | 0 | 1 (8.5) |

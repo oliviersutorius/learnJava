@@ -1,5 +1,7 @@
 package com.learnjava.m03.ex03;
 
+import java.util.Locale;
+
 /**
  * Exercice 3 — Une température immuable.
  * Notions : objet immuable (attributs private final, pas de setter), constructeur private,
@@ -11,42 +13,49 @@ package com.learnjava.m03.ex03;
  * ramenée au zéro absolu.
  *
  * Conversions : °F = °C × 9/5 + 32 ; K = °C + 273.15.
- *
- * TODO : choisis UNE unité de stockage, déclare l'attribut et écris le constructeur private.
  */
-public class Temperature {
+public final class Temperature {
+
+    private static final double ABSOLUTE_ZERO_CELSIUS = -273.15;
+    private static final double FREEZING_POINT_CELSIUS = 0.0;
+
+    private final double celsius;
+
+    private Temperature(double celsius) {
+        this.celsius = Math.max(ABSOLUTE_ZERO_CELSIUS, celsius);
+    }
 
     /**
      * Exemple : Temperature.ofCelsius(21.5).
      */
     public static Temperature ofCelsius(double celsius) {
-        throw new UnsupportedOperationException("TODO");
+        return new Temperature(celsius);
     }
 
     /**
      * Exemple : Temperature.ofFahrenheit(212).getCelsius() = 100.0.
      */
     public static Temperature ofFahrenheit(double fahrenheit) {
-        throw new UnsupportedOperationException("TODO");
+        return new Temperature((fahrenheit - 32) * 5.0 / 9);
     }
 
     /**
      * Exemple : Temperature.ofKelvin(0).getCelsius() = -273.15.
      */
     public static Temperature ofKelvin(double kelvin) {
-        throw new UnsupportedOperationException("TODO");
+        return new Temperature(kelvin + ABSOLUTE_ZERO_CELSIUS);
     }
 
     public double getCelsius() {
-        throw new UnsupportedOperationException("TODO");
+        return celsius;
     }
 
     public double getFahrenheit() {
-        throw new UnsupportedOperationException("TODO");
+        return celsius * 9.0 / 5 + 32;
     }
 
     public double getKelvin() {
-        throw new UnsupportedOperationException("TODO");
+        return celsius - ABSOLUTE_ZERO_CELSIUS;
     }
 
     /**
@@ -55,21 +64,21 @@ public class Temperature {
      * Exemple : ofCelsius(20).plus(1.5) vaut 21.5 °C, et ofCelsius(20) vaut toujours 20 °C.
      */
     public Temperature plus(double deltaCelsius) {
-        throw new UnsupportedOperationException("TODO");
+        return new Temperature(celsius + deltaCelsius);
     }
 
     /**
      * Indique si l'eau gèle à cette température (0 °C ou moins).
      */
     public boolean isFreezing() {
-        throw new UnsupportedOperationException("TODO");
+        return celsius <= FREEZING_POINT_CELSIUS;
     }
 
     /**
      * Indique si cette température est strictement plus chaude que other.
      */
     public boolean isWarmerThan(Temperature other) {
-        throw new UnsupportedOperationException("TODO");
+        return this.celsius > other.celsius;
     }
 
     /**
@@ -77,6 +86,6 @@ public class Temperature {
      */
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("TODO");
+        return String.format(Locale.ROOT, "%.1f °C", celsius);
     }
 }
