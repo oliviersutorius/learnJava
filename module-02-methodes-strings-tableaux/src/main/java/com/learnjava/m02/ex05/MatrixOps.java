@@ -13,7 +13,13 @@ public class MatrixOps {
      * Exemple : identity(2) = {{1, 0}, {0, 1}}.
      */
     public static int[][] identity(int size) {
-        throw new UnsupportedOperationException("TODO");
+        int[][] result = new int[size][size];
+
+        for (int i = 0; i < size; i++) {
+            result[i][i] = 1;
+        }
+
+        return result;
     }
 
     /**
@@ -22,14 +28,34 @@ public class MatrixOps {
      * La matrice reçue ne doit pas être modifiée.
      */
     public static int[][] transpose(int[][] matrix) {
-        throw new UnsupportedOperationException("TODO");
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        int[][] result = new int[cols][rows];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result[j][i] = matrix[i][j];
+            }
+        }
+
+        return result;
     }
 
     /**
      * Additionne deux matrices de mêmes dimensions, case par case.
      */
     public static int[][] add(int[][] a, int[][] b) {
-        throw new UnsupportedOperationException("TODO");
+        int rows = a.length;
+        int cols = a[0].length;
+        int[][] result = new int[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result[i][j] = a[i][j] + b[i][j];
+            }
+        }
+
+        return result;
     }
 
     /**
@@ -38,7 +64,22 @@ public class MatrixOps {
      * Exemple : {{1, 2}, {3, 4}} × {{5, 6}, {7, 8}} = {{19, 22}, {43, 50}}.
      */
     public static int[][] multiply(int[][] a, int[][] b) {
-        throw new UnsupportedOperationException("TODO");
+        int rows = a.length;
+        int cols = b[0].length;
+        int common = b.length;
+        int[][] result = new int[rows][cols];
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                int sum = 0;
+                for (int k = 0; k < common; k++) {
+                    sum += a[i][k] * b[k][j];
+                }
+                result[i][j] = sum;
+            }
+        }
+
+        return result;
     }
 
     /**
@@ -46,6 +87,18 @@ public class MatrixOps {
      * Une matrice non carrée n'est pas symétrique.
      */
     public static boolean isSymmetric(int[][] matrix) {
-        throw new UnsupportedOperationException("TODO");
+        int size = matrix.length;
+        if (matrix[0].length != size) {
+            return false;
+        }
+
+        for (int i = 0; i < size; i++) {
+            for (int j = i + 1; j < size; j++) {
+                if (matrix[i][j] != matrix[j][i]) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }

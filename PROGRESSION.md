@@ -17,7 +17,7 @@ Coche une case (`[x]`) quand les tests correspondants sont verts.
 - [x] Ex 2 `ArrayStats`
 - [x] Ex 3 `CaesarCipher`
 - [x] Ex 4 `WordCounter`
-- [ ] Ex 5 `MatrixOps`
+- [x] Ex 5 `MatrixOps`
 - [ ] 🎯 Mini-projet `GradeBook`
 - [ ] Revue de code faite
 
