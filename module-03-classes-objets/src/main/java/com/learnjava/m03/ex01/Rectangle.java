@@ -1,22 +1,26 @@
 package com.learnjava.m03.ex01;
 
+import java.util.Locale;
+
 /**
  * Exercice 1 — Un rectangle.
  * Notions : attributs privés, constructeurs et this(...), getters, méthodes d'instance, objet reçu en paramètre,
  * toString.
- *
+ * <p>
  * Un rectangle a une largeur et une hauteur (des double). Elles ne sont jamais négatives.
- *
- * TODO : déclare les attributs (private !) avant d'écrire le premier constructeur.
  */
 public class Rectangle {
+
+    private double width;
+    private double height;
 
     /**
      * Crée un rectangle. Une dimension négative est remplacée par 0.
      * Exemple : new Rectangle(3, -2) a une largeur de 3.0 et une hauteur de 0.0.
      */
     public Rectangle(double width, double height) {
-        throw new UnsupportedOperationException("TODO");
+        this.width = Math.max(0, width);
+        this.height = Math.max(0, height);
     }
 
     /**
@@ -24,36 +28,36 @@ public class Rectangle {
      * Astuce : une seule ligne, qui appelle l'autre constructeur.
      */
     public Rectangle(double side) {
-        throw new UnsupportedOperationException("TODO");
+        this(side, side);
     }
 
     public double getWidth() {
-        throw new UnsupportedOperationException("TODO");
+        return width;
     }
 
     public double getHeight() {
-        throw new UnsupportedOperationException("TODO");
+        return height;
     }
 
     /**
      * Renvoie l'aire. Exemple : 3 x 2 -> 6.0.
      */
     public double area() {
-        throw new UnsupportedOperationException("TODO");
+        return width * height;
     }
 
     /**
      * Renvoie le périmètre. Exemple : 3 x 2 -> 10.0.
      */
     public double perimeter() {
-        throw new UnsupportedOperationException("TODO");
+        return (width + height) * 2;
     }
 
     /**
      * Indique si le rectangle est un carré (largeur et hauteur exactement égales).
      */
     public boolean isSquare() {
-        throw new UnsupportedOperationException("TODO");
+        return width == height;
     }
 
     /**
@@ -61,7 +65,11 @@ public class Rectangle {
      * Un facteur négatif est ignoré : le rectangle ne change pas. Un facteur 0 est accepté.
      */
     public void scale(double factor) {
-        throw new UnsupportedOperationException("TODO");
+        if (factor < 0) {
+            return;
+        }
+        width *= factor;
+        height *= factor;
     }
 
     /**
@@ -71,7 +79,7 @@ public class Rectangle {
      * Exemples : un 5 x 3 peut contenir un 5 x 2, mais pas un 3 x 5.
      */
     public boolean canContain(Rectangle other) {
-        throw new UnsupportedOperationException("TODO");
+        return other != null && width >= other.width && height >= other.height;
     }
 
     /**
@@ -79,6 +87,6 @@ public class Rectangle {
      */
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("TODO");
+        return String.format(Locale.ROOT, "Rectangle %.1f x %.1f", width, height);
     }
 }

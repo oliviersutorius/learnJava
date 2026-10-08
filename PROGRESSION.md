@@ -23,7 +23,8 @@ Coche une case (`[x]`) quand les tests correspondants sont verts.
 
 ## Niveau 2 — POO
 ### M03. Classes, objets, encapsulation
-- [ ] Ex 1 `Rectangle`
+
+- [x] Ex 1 `Rectangle`
 - [ ] Ex 2 `BankAccount`
 - [ ] Ex 3 `Temperature`
 - [ ] Ex 4 `Book` et `Library`

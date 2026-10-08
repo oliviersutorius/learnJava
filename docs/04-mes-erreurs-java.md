@@ -16,7 +16,7 @@ Légende des statuts : ✅ corrigé · ⏸️ pas encore corrigé · 🔁 erreur
 | 1.2 | Types et opérateurs | Écrire un littéral décimal (`9.0`) plutôt qu'un cast (`(double) 9`) | 2 | M01 #2 | 🔁 ⏸️ |
 | 1.3 | Types et opérateurs | Décomposer une valeur avec `/` et `%` | 2 | M01 #2 | 🔁 ⏸️ |
 | 2.1 | Comparaisons | Comparer les primitifs avec `==`, pas leur représentation texte | 3 | M02 #1 | ✅ |
-| 3.1 | Expressions booléennes | Renvoyer directement la condition au lieu de `if … return true/false` | 2 | M01 #2 | 🔁 ⏸️ |
+| 3.1 | Expressions booléennes | Renvoyer directement la condition au lieu de `if … return true/false` | 2 | M01 #2 | ✅ |
 | 3.2 | Expressions booléennes | Pas de drapeau booléen quand l'état est déjà déductible | 2 | M01 #2 | ✅ |
 | 4.1 | Boucles | Préférer une condition de boucle explicite à `while (true)` + `break` | 1 | M01 #1 | ✅ |
 | 4.2 | Boucles | `hasNextInt()` ne consomme pas l'entrée | 1 | M01 #1 | ✅ |
@@ -27,7 +27,7 @@ Légende des statuts : ✅ corrigé · ⏸️ pas encore corrigé · 🔁 erreur
 | 7.1 | Conventions de style | Toujours des accolades, même sur une ligne | 2 | M01 #2 | ✅ |
 | 7.2 | Conventions de style | `} else {` sur la même ligne | 2 | M01 #2 | ✅ |
 | 7.3 | Conventions de style | `i++` et `+=` plutôt que `i += 1` et `x = x + y` | 3 | M02 #1 | ✅ |
-| 7.4 | Conventions de style | Formater le code et supprimer les imports inutilisés | 4 | M02 #11 | ✅ |
+| 7.4 | Conventions de style | Formater le code et supprimer les imports inutilisés | 5 | M03 #1 | ✅ |
 | 8.1 | API standard | `print` n'ajoute pas de retour à la ligne, `println` oui | 1 | M01 #1 | ✅ |
 | 8.2 | API standard | Un seul `String.format` pour plusieurs valeurs | 2 | M01 #2 | ✅ |
 | 8.3 | API standard | Utiliser `String`, `StringBuilder` et `Character` plutôt que les réinventer | 1 | M02 #1 | ✅ |
@@ -134,7 +134,7 @@ return day >= 1 && day <= maxDay;
 
 **Pourquoi :** `if (cond) return true; else return false;` est un détour. Le test `maxDay == -1` était en plus redondant : si `maxDay` vaut -1, `day > maxDay` est déjà vrai pour tout jour positif.
 
-Revues : M01 #1, M01 #2 (pas encore corrigé)
+Revues : M01 #1, M01 #2 · ✅ corrigé en M03 #1 (`isSquare` et `canContain` de `Rectangle` renvoient directement la condition)
 
 ### 3.2 Pas de drapeau booléen quand l'état est déjà déductible
 
@@ -351,8 +351,14 @@ Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2
 - Les commentaires `// TODO` et le code commenté sont à supprimer une fois le travail fait (revue #1, ✅ corrigé).
 - M02 #1 : `import java.util.Locale;` inutilisé (`m02/ex01/StringTools.java:3`), espaces irréguliers `text.length()-1` (l. 24) et `+ 1 ;` (l. 45).
 - M02 #11 : `m02/miniprojet/GradeBook.java` — deux lignes vides de suite (l. 38-39), parenthèses fermantes de `formatReport(...)` décalées (l. 174-178), ligne 135 de 125 caractères (la limite usuelle est 100 ou 120). `Ctrl+Alt+L` règle les deux premiers, puis il faut couper la ligne 135.
+- M03 #1 : `m03/ex01/Rectangle.java:69` — `if (factor < 0 ) { return; }` : un bloc écrit sur une seule ligne et un espace avant `)`. Convention Java : le contenu du bloc va sur sa propre ligne, même s'il ne fait qu'une instruction.
+  ```java
+  if (factor < 0) {
+      return;
+  }
+  ```
 
-Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2 · réapparue en M02 #11 · ✅ corrigé en M02 #12
+Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2 · réapparue en M02 #11 · ✅ corrigé en M02 #12 · réapparue en M03 #1 · ✅ corrigé en M03 #2
 
 ---
 
@@ -467,3 +473,5 @@ Revues : M02 #1 · ✅ corrigé en M02 #2
 | M02 #10 | 2026-10-08 | M02 — Ex05 `MatrixOps` | 0 | — |
 | M02 #11 | 2026-10-08 | M02 — Mini-projet `GradeBook` | 0 (6.2 et 7.4 réapparaissent) | 2 (7.2, 8.2) |
 | M02 #12 | 2026-10-08 | M02 — Mini-projet `GradeBook` (vérification) | 0 | 2 (6.2, 7.4) |
+| M03 #1 | 2026-10-08 | M03 — Ex01 `Rectangle` | 0 (7.4 réapparaît) | 1 (3.1) |
+| M03 #2 | 2026-10-08 | M03 — Ex01 `Rectangle` (vérification) | 0 | 1 (7.4) |
