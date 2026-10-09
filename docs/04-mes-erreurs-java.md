@@ -20,19 +20,20 @@ Légende des statuts : ✅ corrigé · ⏸️ pas encore corrigé · 🔁 erreur
 | 3.2 | Expressions booléennes | Pas de drapeau booléen quand l'état est déjà déductible | 2 | M01 #2 | ✅ |
 | 4.1 | Boucles | Préférer une condition de boucle explicite à `while (true)` + `break` | 1 | M01 #1 | ✅ |
 | 4.2 | Boucles | `hasNextInt()` ne consomme pas l'entrée | 1 | M01 #1 | ✅ |
-| 5.1 | Constantes | Pas de nombres magiques : `private static final` en `UPPER_SNAKE_CASE` | 4 | M02 #2 | ✅ |
-| 6.1 | Nommage | Identifiants en anglais, sans fautes, cohérents | 5 | M02 #6 | ✅ |
+| 5.1 | Constantes | Pas de nombres magiques : `private static final` en `UPPER_SNAKE_CASE` | 5 | M03 #7 | ✅ |
+| 6.1 | Nommage | Identifiants en anglais, sans fautes, cohérents | 6 | M03 #7 | ✅ |
 | 6.2 | Nommage | Un nom doit dire ce que contient la variable | 3 | M02 #11 | ✅ |
 | 6.3 | Nommage | Ne pas donner à une variable le nom d'une méthode | 2 | M02 #8 | ✅ |
 | 7.1 | Conventions de style | Toujours des accolades, même sur une ligne | 2 | M01 #2 | ✅ |
 | 7.2 | Conventions de style | `} else {` sur la même ligne | 2 | M01 #2 | ✅ |
 | 7.3 | Conventions de style | `i++` et `+=` plutôt que `i += 1` et `x = x + y` | 3 | M02 #1 | ✅ |
-| 7.4 | Conventions de style | Formater le code et supprimer les imports inutilisés | 6 | M03 #3 | ✅ |
+| 7.4 | Conventions de style | Formater le code et supprimer les imports inutilisés | 8 | M03 #8 | ✅ |
 | 8.1 | API standard | `print` n'ajoute pas de retour à la ligne, `println` oui | 1 | M01 #1 | ✅ |
 | 8.2 | API standard | Un seul `String.format` pour plusieurs valeurs | 2 | M01 #2 | ✅ |
 | 8.3 | API standard | Utiliser `String`, `StringBuilder` et `Character` plutôt que les réinventer | 1 | M02 #1 | ✅ |
 | 8.4 | API standard | `toUpperCase`/`toLowerCase` : une seule conversion, toujours avec la même `Locale` | 2 | M02 #8 | ✅ |
 | 8.5 | API standard | Formater un `double` avec `%.Nf`, pas avec `%s` | 1 | M03 #5 | ✅ |
+| 8.6 | API standard | Le gabarit de `String.format` est une constante : jamais de données concaténées dedans | 1 | M03 #8 | ✅ |
 | 9.1 | Méthodes | Ne pas réaffecter un paramètre | 1 | M02 #1 | ✅ |
 
 ---
@@ -225,7 +226,18 @@ private static final String VOWELS = "aeiouy";
 
 M02 #2 : la constante existe, mais elle est déclarée `public static final String VOWELS` (`m02/ex01/StringTools.java:12`). Elle n'est utile qu'à la classe, donc `private` : une constante `public` fait partie de l'API de la classe, et d'autres classes pourraient s'en servir.
 
-Revues : M01 #1 (`7` ✅ corrigé avec `MAX_ATTEMPTS` en #2), M01 #2 (`3600`/`60` pas encore corrigés), M02 #1 (`"aeiouy"`), M02 #2 (`public` au lieu de `private`) · ✅ corrigé en M02 #3
+M03 #7 : le mot-clé `static` manque (`m03/ex04/Book.java:20-21`). Sans `static`, chaque livre possède sa propre copie des deux chaînes : ce sont des attributs d'instance qui se font passer pour des constantes, et `UPPER_SNAKE_CASE` sur un attribut d'instance trompe le lecteur.
+
+```java
+// ❌ m03/ex04/Book.java:20-21 — un attribut par objet, et des noms en français (voir 6.1)
+private final String DISPONIBLE = "disponible";
+private final String EMPRUNTE = "emprunté";
+// ✅ une seule valeur pour toute la classe
+private static final String AVAILABLE_LABEL = "disponible";
+private static final String BORROWED_LABEL = "emprunté";
+```
+
+Revues : M01 #1 (`7` ✅ corrigé avec `MAX_ATTEMPTS` en #2), M01 #2 (`3600`/`60` pas encore corrigés), M02 #1 (`"aeiouy"`), M02 #2 (`public` au lieu de `private`) · ✅ corrigé en M02 #3 · réapparue en M03 #7 (`static` oublié) · ✅ corrigé en M03 #8 (les deux libellés, utilisés une seule fois, sont écrits directement dans `toString`)
 
 ---
 
@@ -244,11 +256,12 @@ String[] morceaux = ...;   // m02/ex01/StringTools.java:111 -> words
 String textCleaned = ...;  // m02/ex01/StringTools.java:39  -> cleaned (en anglais, l'adjectif se place avant : cleanedText)
 int nbAbove = 0;           // m02/ex02/ArrayStats.java:87  -> count (« nb » est une abréviation française)
 String[] chains = ...;     // m02/ex03/CaesarCipher.java:53 -> candidates (faux ami : « chain » = chaîne métallique, pas chaîne de caractères)
+DISPONIBLE, EMPRUNTE       // m03/ex04/Book.java:20-21 -> AVAILABLE_LABEL, BORROWED_LABEL (la VALEUR affichée reste en français, le NOM est en anglais)
 ```
 
 **Pourquoi :** le code Java professionnel est écrit en anglais ; mélanger les langues ou les formes (singulier/pluriel) oblige le lecteur à deviner. Dans IntelliJ, `Shift+F6` renomme partout d'un coup.
 
-Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2 · réapparue en M02 #4 · ✅ corrigé en M02 #5 · réapparue en M02 #6 · ✅ corrigé en M02 #7
+Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2 · réapparue en M02 #4 · ✅ corrigé en M02 #5 · réapparue en M02 #6 · ✅ corrigé en M02 #7 · réapparue en M03 #7 · ✅ corrigé en M03 #8
 
 ### 6.2 Un nom doit dire ce que contient la variable
 
@@ -363,9 +376,11 @@ Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2
       return;
   }
   ```
+- M03 #7 : `import java.lang.reflect.Array;` inutilisé (`m03/ex04/Library.java:3`) → `Ctrl+Alt+O`.
+- M03 #8 : l'import de `Library` est corrigé, mais `import java.util.Locale;` est devenu inutilisé dans `m03/ex04/Book.java:3` quand `Locale.ROOT` a été retiré de `toString`. Réflexe : `Ctrl+Alt+O` après **chaque** modification, pas seulement à la première écriture.
 - M03 #3 : `m03/ex02/BankAccount.java:22-23` — deux lignes vides de suite entre les attributs `static` et les attributs d'instance ; l. 16, la ligne `TODO : déclare les attributs…` du code de départ est restée dans la Javadoc alors que le travail est fait.
 
-Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2 · réapparue en M02 #11 · ✅ corrigé en M02 #12 · réapparue en M03 #1 · ✅ corrigé en M03 #2 · réapparue en M03 #3 · ✅ corrigé en M03 #4 (reste un `<p>` vide en fin de Javadoc, l. 15)
+Revues : M01 #1, M01 #2, M02 #1 · ✅ corrigé en M02 #2 · réapparue en M02 #11 · ✅ corrigé en M02 #12 · réapparue en M03 #1 · ✅ corrigé en M03 #2 · réapparue en M03 #3 · ✅ corrigé en M03 #4 (reste un `<p>` vide en fin de Javadoc, l. 15) · réapparue en M03 #7 · toujours présente en M03 #8 · ✅ corrigé en M03 #9
 
 ---
 
@@ -460,6 +475,23 @@ return String.format(Locale.ROOT, "%.1f °C", celsius);
 
 Revues : M03 #5 · ✅ corrigé en M03 #6
 
+### 8.6 Le gabarit de `String.format` est une constante : jamais de données concaténées dedans
+
+```java
+// ❌ m03/ex04/Book.java:81 — le titre et l'auteur font partie du GABARIT
+return String.format(title + " (" + author + ") - " + (isAvailable() ? "disponible" : "emprunté"));
+// new Book("1", "100% Java", "Doe").toString() -> UnknownFormatConversionException: Conversion = 'J'
+
+// ✅ soit un gabarit fixe et les données en arguments
+return String.format("%s (%s) - %s", title, author, status);
+// ✅ soit une simple concaténation, sans String.format
+return title + " (" + author + ") - " + status;
+```
+
+**Pourquoi :** le premier argument de `String.format` est interprété : chaque `%` y introduit un spécificateur. Si une donnée (titre, saisie utilisateur…) contient `%`, le formatage plante ou affiche n'importe quoi. Les données vont toujours dans les arguments, jamais dans le gabarit. C'est le même principe qu'en PHP avec `sprintf` ou qu'avec les requêtes préparées de Laravel (`where('title', $title)` plutôt que `whereRaw("title = '$title'")`).
+
+Revues : M03 #8 · ✅ corrigé en M03 #9 (simple concaténation, sans `String.format`)
+
 ---
 
 ## 9. Méthodes
@@ -503,3 +535,6 @@ Revues : M02 #1 · ✅ corrigé en M02 #2
 | M03 #4 | 2026-10-08 | M03 — Ex02 `BankAccount` (vérification) | 0 | 1 (7.4) |
 | M03 #5 | 2026-10-08 | M03 — Ex03 `Temperature` | 1 (8.5) | — |
 | M03 #6 | 2026-10-08 | M03 — Ex03 `Temperature` (vérification) | 0 | 1 (8.5) |
+| M03 #7 | 2026-10-09 | M03 — Ex04 `Book` / `Library` | 0 (5.1, 6.1 et 7.4 réapparaissent) | — |
+| M03 #8 | 2026-10-09 | M03 — Ex04 `Book` / `Library` (vérification) | 1 (8.6) | 2 (5.1, 6.1) |
+| M03 #9 | 2026-10-09 | M03 — Ex04 `Book` / `Library` (vérification) | 0 | 2 (7.4, 8.6) |

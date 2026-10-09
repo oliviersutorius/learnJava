@@ -6,46 +6,72 @@ package com.learnjava.m03.ex04;
  *
  * L'ISBN, le titre et l'auteur ne changent jamais. Un livre est disponible à sa création ; il peut ensuite être
  * emprunté, puis rendu.
- *
- * TODO : déclare les attributs.
  */
 public class Book {
 
+    private final String isbn;
+    private final String title;
+    private final String author;
+
+    private boolean available;
+
     public Book(String isbn, String title, String author) {
-        throw new UnsupportedOperationException("TODO");
+        this.isbn = isbn;
+        this.title = title;
+        this.author = author;
+        this.available = true;
     }
 
     public String getIsbn() {
-        throw new UnsupportedOperationException("TODO");
+        return isbn;
     }
 
     public String getTitle() {
-        throw new UnsupportedOperationException("TODO");
+        return title;
     }
 
     public String getAuthor() {
-        throw new UnsupportedOperationException("TODO");
+        return author;
     }
 
     /**
      * Indique si le livre est disponible (pas emprunté).
      */
     public boolean isAvailable() {
-        throw new UnsupportedOperationException("TODO");
+        return available;
     }
 
     /**
      * Emprunte le livre. Renvoie false (et ne change rien) s'il est déjà emprunté.
      */
     public boolean borrow() {
-        throw new UnsupportedOperationException("TODO");
+        if (!available) {
+            return false;
+        }
+
+        available = false;
+
+        return true;
     }
 
     /**
      * Rend le livre. Renvoie false (et ne change rien) s'il n'était pas emprunté.
      */
     public boolean giveBack() {
-        throw new UnsupportedOperationException("TODO");
+        if (available) {
+            return false;
+        }
+
+        available = true;
+
+        return true;
+    }
+
+    /**
+     * Indique si l'auteur de ce livre est bien author.
+     */
+    public boolean isWrittenBy(String author) {
+        return this.author.equalsIgnoreCase(author);
     }
 
     /**
@@ -53,6 +79,8 @@ public class Book {
      */
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("TODO");
+        String status = available ? "disponible" : "emprunté";
+
+        return title + " (" + author + ") - " + status;
     }
 }

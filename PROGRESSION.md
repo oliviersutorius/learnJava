@@ -27,7 +27,7 @@ Coche une case (`[x]`) quand les tests correspondants sont verts.
 - [x] Ex 1 `Rectangle`
 - [x] Ex 2 `BankAccount`
 - [x] Ex 3 `Temperature`
-- [ ] Ex 4 `Book` et `Library`
+- [x] Ex 4 `Book` et `Library`
 - [ ] 🎯 Mini-projet carnet de contacts (`Contact`, `ContactBook`, `ContactBookApp`)
 - [ ] Revue de code faite
 
